@@ -1,0 +1,76 @@
+graphQL:
+  url: ${DGRAH_ENDPOINT:http://localhost:8086/graphql}
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    loggers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: httptrace,loggers,health,metrics
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+spring:
+  application:
+    name: Archetype
+swagger:
+  info:
+    controller:
+      description: Endpoints for CRUD operations on TEST
+    description: Archetype for TEST
+    package: com.nttdata.som.serviceorder
+    title: Archetype
+    version: 1.0
+  server:
+    listOfServer: '{''http://localhost:8082/ --- Development Environment'',''http://pre-production-api.example.com
+      --- PreProduction Environment'',''http://production-api.example.com --- Production
+      Environment''}'
+  tags:
+    controller: TestController
+com:
+  nttdata:
+    filter:
+      serviceOrder:
+        orderDate: orderDate
+        startDate: startDate
+      flowExecutionRef:
+        creationDate: creationDate
+        endExecutionDate: endExecutionDate
+        executionDate: executionDate
+    datePattern:
+      value: yyyy-MM-dd'T'HH:mm:ss.000
+    nameId:
+      value: id
+    cadence:
+      domain: ${CADENCE_DOMAIN:simple-domain}
+      port: ${CADENCE_PORT:7933}
+      host: ${CADENCE_HOST:localhost}
+      tasklist: ${CADENCE_TASKLIST:loadFlow}
+      workflowTimeout: ${CADENCE_TIMEOUT_WORKFLOW:1000}
+
+    oauth:
+      authType: token
+      clientId: ossinternal
+      clientSecret: fd1b307d-2a57-46a7-98b6-a93063b86a37
+      grantType: client_credentials
+      scope: oss_api_internal
+      urlWellKnow: https://login.ugg.tech/ugg-iam/oidc/.well-known
+
+security:
+  ignored: /**
+  enabled: false
+  management:
+    security:
+      enabled: false
+  basic:
+    enabled: false
+      
+      
+      

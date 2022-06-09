@@ -1,0 +1,452 @@
+enum _PartyOrdering {
+	  id_asc
+	  id_desc
+	  href_asc
+	  href_desc
+	  name_asc
+	  name_desc
+	  role_asc
+	  role_desc
+	  _id_asc
+	  _id_desc
+	}
+
+
+type Party {
+  id: String! @id
+  href: String
+  name: String
+  role: String
+  serviceOrders: [ServiceOrder]
+  baseType: String
+  schemaLocation: String
+  type: String
+  referredType: String
+}
+
+
+enum _ServiceOrderItemOrdering {
+  id_asc
+  id_desc
+  _atType_asc
+  _atType_desc
+  action_asc
+  action_desc
+  _id_asc
+  _id_desc
+}
+
+
+type ExternalReference {
+    id: String! @id
+    href: String
+    externalReferenceType: String
+    name: String
+}
+
+type ServiceOrderRelationship {
+    id: String! @id
+    href: String
+    relationshipType: String
+}
+
+type AppointmentRef {
+    id: ID!
+    href: String
+    description: String
+}
+
+type ServiceOrderItem {
+  serviceOrderItemId: ID!
+  quantity: Int
+  appointment: AppointmentRef
+  id: String! @search(by: [hash])
+  type: String!
+  action: String!
+  service: ServiceSOM!
+  state: String
+}
+
+
+enum _ServiceSOMOrdering {
+  id_asc
+  id_desc
+  href_asc
+  href_desc
+  category_asc
+  category_desc
+  description_asc
+  description_desc
+  externalId_asc
+  externalId_desc
+  hasStarted_asc
+  hasStarted_desc
+  isServiceEnabled_asc
+  isServiceEnabled_desc
+  isStateful_asc
+  isStateful_desc
+  name_asc
+  name_desc
+  serviceDate_asc
+  serviceDate_desc
+  serviceState_asc
+  serviceState_desc
+  serviceType_asc
+  serviceType_desc
+  state_asc
+  state_desc
+  type_asc
+  type_desc
+  relationshipType_asc
+  relationshipType_desc
+  _atSchemaLocation_asc
+  _atSchemaLocation_desc
+  _atType_asc
+  _atType_desc
+  _id_asc
+  _id_desc
+}
+
+
+type ServiceSOM {
+  id: ID!
+  href: String
+  category: String @search(by: [hash])
+  description: String
+  endDate: String
+  isBundle: Boolean
+  startDate: String
+  startMode: String
+  externalId: String @search(by: [hash])
+  hasStarted: Boolean
+  isServiceEnabled: Boolean
+  isStateful: Boolean
+  name: String
+  serviceDate: String
+  serviceType: String
+  state: String @search(by: [hash])
+  type: String
+  relatedParty: [Party]
+  place: [Place]  @hasInverse(field: services)
+  serviceSpecification: ServiceSpecificationRef @hasInverse(field: services)
+
+  serviceCharacteristic: [Characteristic] @hasInverse(field: services)
+  supportingService: [ServiceSOM]
+  supportingResource: [ResourceRef]
+  serviceRelationship: [ServiceRelationship]
+  relatedEntity: [RelatedEntity]
+  note: [Note]
+  feature: [Feature]
+}
+
+type ServiceRelationship{
+ id: ID!
+ relationshipType: String!
+ service : ServiceSOM
+ serviceRelationshipCharacteristic: [Characteristic]
+}
+
+type Feature{
+  id: ID!
+  isBundle: Boolean
+  isEnabled: Boolean
+  name: String
+}
+
+type RelatedEntity{
+  id: String! @id
+  href: String
+  name: String
+  role: String!
+}
+
+type ResourceRef{
+  id: String! @id
+  href: String
+  name: String
+}
+
+enum _PlaceOrdering {
+  id_asc
+  id_desc
+  name_asc
+  name_desc
+  role_asc
+  role_desc
+  _atType_asc
+  _atType_desc
+  _id_asc
+  _id_desc
+}
+
+type Place {
+  placeId: ID!
+  id: String
+  href: String
+  name: String
+  role: String
+  type: String
+  services: [ServiceSOM]
+
+  geometryType: String
+  accuracy: String
+  spatialRef: String
+  geometry: [Geometry]
+
+}
+
+type Geometry {
+    x: String! @id
+    y: String! @id
+}
+
+
+enum _ServiceSpecificationRefOrdering {
+  id_asc
+  id_desc
+  _atReferredType_asc
+  _atReferredType_desc
+  _atType_asc
+  _atType_desc
+  href_asc
+  href_desc
+  name_asc
+  name_desc
+  version_asc
+  version_desc
+  _id_asc
+  _id_desc
+}
+
+
+type ServiceSpecificationRef {
+   id: String! @id
+  referredType: String
+  type: String
+  href: String
+  name: String!
+  version: String
+  services: [ServiceSOM]
+}
+
+
+enum _CharacteristicOrdering {
+  id_asc
+  id_desc
+  _atType_asc
+  _atType_desc
+  name_asc
+  name_desc
+  unitOfMeasure_asc
+  unitOfMeasure_desc
+  value_asc
+  value_desc
+  valueType_asc
+  valueType_desc
+  valueUnits_asc
+  valueUnits_desc
+  _id_asc
+  _id_desc
+}
+
+
+type Characteristic {
+  characteristicId: ID!
+  id: String! @search(by: [hash])
+  _atType: String
+  name: String
+  unitOfMeasure: String
+  value: String
+  valueType: String
+  valueUnits: String
+  services: [ServiceSOM]
+  characteristicRelationship: [CharacteristicRelationship]
+}
+
+type CharacteristicRelationship {
+    id: ID!
+    relationshipType: String
+}
+
+
+enum _NoteOrdering {
+  id_asc
+  id_desc
+  author_asc
+  author_desc
+  date_asc
+  date_desc
+  text_asc
+  text_desc
+  _id_asc
+  _id_desc
+}
+
+type Note {
+  id: ID!
+  author: String!
+  date: String!
+  text: String!
+  serviceorder: [ServiceOrder]
+}
+
+
+enum _FlowExecutionRefOrdering {
+  id_asc
+  id_desc
+  domainId_asc
+  domainId_desc
+  projectId_asc
+  projectId_desc
+  runId_asc
+  runId_desc
+  workflowId_asc
+  workflowId_desc
+  _id_asc
+  _id_desc
+}
+
+
+type FlowExecutionRef {
+  id: ID!
+  domainId: String
+  projectId: String
+  runId: String
+  workflowId: String
+  creationDate: String @search(by: [exact])
+  executionDate:  String @search(by: [exact])
+  endExecutionDate: String @search(by: [exact])
+  cancelto: FlowExecutionRef
+  serviceorders: ServiceOrder
+}
+
+
+
+enum _CancellationRequestOrdering {
+  id_asc
+  id_desc
+  _atType_asc
+  _atType_desc
+  cancellationReason_asc
+  cancellationReason_desc
+  externalId_asc
+  externalId_desc
+  href_asc
+  href_desc
+  requestedCancellationDate_asc
+  requestedCancellationDate_desc
+  state_asc
+  state_desc
+  _id_asc
+  _id_desc
+}
+
+type CancellationRequest {
+  id: ID!
+  _atType: String
+  cancellationReason: String
+  externalId: String @search(by: [hash])
+  href: String
+  requestedCancellationDate: String
+  state: String
+  serviceorders: [ServiceOrder]
+
+}
+
+
+enum _ModificationRequestOrdering {
+  id_asc
+  id_desc
+  _atType_asc
+  _atType_desc
+  externalId_asc
+  externalId_desc
+  modifyReason_asc
+  modifyReason_desc
+  requestedCompletionDate_asc
+  requestedCompletionDate_desc
+  _id_asc
+  _id_desc
+}
+
+
+type ModificationRequest {
+  id: ID!
+  _atType: String!
+  externalId: String @search(by: [hash])
+  modifyReason: String!
+  requestedCompletionDate: String!
+  serviceorders: [ServiceOrder]
+}
+
+
+enum _ServiceOrderOrdering {
+  id_asc
+  id_desc
+  _atType_asc
+  _atType_desc
+  category_asc
+  category_desc
+  description_asc
+  description_desc
+  externalId_asc
+  externalId_desc
+  priority_asc
+  priority_desc
+  requestedCompletionDate_asc
+  requestedCompletionDate_desc
+  requestedStartDate_asc
+  requestedStartDate_desc
+  state_asc
+  state_desc
+  _id_asc
+  _id_desc
+}
+
+type ServiceOrder {
+  id: ID!
+  _atType: String
+  category: String
+  description: String @search(by: [fulltext])
+  externalId: String
+  priority: String
+  orderDate: String @search(by: [exact])
+  startDate: String @search(by: [exact])
+  requestedCompletionDate: String
+  requestedStartDate: String
+  state: String @search(by: [hash])
+  externalReference: [ExternalReference]
+  orderRelationship: [ServiceOrderRelationship]
+  relatedParty:[Party] @hasInverse(field: serviceOrders)
+  flowExecutionRef: FlowExecutionRef @hasInverse(field: serviceorders)
+  cancelRequest: CancellationRequest @hasInverse(field: serviceorders)
+  modifyRequest: [ModificationRequest] @hasInverse(field: serviceorders)
+  serviceOrderItem: [ServiceOrderItem]
+  note: [Note] @hasInverse(field: serviceorder)
+}
+
+
+enum _SupportingServiceOrdering {
+  id_asc
+  id_desc
+  href_asc
+  href_desc
+  _atReferredType_asc
+  _atReferredType_desc
+  _atType_asc
+  _atType_desc
+  _id_asc
+  _id_desc
+}
+
+
+enum _RelationDirections {
+  IN
+  OUT
+}
+
+type Subscriber {
+        id: ID!
+        callback: String
+        topic: String@search(by: [hash])
+}
