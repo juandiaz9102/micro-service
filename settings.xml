@@ -17,14 +17,14 @@
         </repository>
         <repository>
           <id>github</id>
-          <url>https://maven.pkg.github.com/everisopennetworks/ffm-ne-back-jv-lib-commons</url>
+          <url>https://maven.pkg.github.com/juandiaz9102/reto-final</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
         </repository>
         <repository>
           <id>github</id>
-          <url>https://maven.pkg.github.com/everisopennetworks/ffm-fc-back-jv-mse-serviceordermgmt</url>
+          <url>https://maven.pkg.github.com/juandiaz9102/micro-service</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
