@@ -41,7 +41,7 @@ jobs:
           USER_NAME: ${{ secrets.USER_NAME }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
         run: mvn --settings settings.xml --file pom.xml deploy
-        run: mvn --batch-mode --update-snapshots package
+        #run: mvn --batch-mode --update-snapshots package
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #************************************************************************
