@@ -13,11 +13,20 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Maven build
-        run: mvn --file pom.xml package
+          distribution: 'adopt'
+      - name: Test
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+
+        run: mvn clean test -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/juandiaz9102/reto-final'
+
+      #- name: Maven build
+        #run: mvn --file pom.xml package
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   deploy:
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - uses: actions/checkout@v1
       - name: Set up JDK 11
@@ -33,6 +42,7 @@ jobs:
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   test:
     runs-on: ubuntu-latest
+    needs: [build, deploy]
     steps:
       - uses: actions/checkout@v1
       - name: test java
@@ -43,7 +53,7 @@ jobs:
       - name: Test
         run: mvn --batch-mode test
 #************************************************************************
-    
+
   #Docker:
     #name: push Docker image
     #runs-on: ubuntu-latest
