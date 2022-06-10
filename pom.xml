@@ -31,6 +31,15 @@
 	</repositories>
 	<dependencies>
 
+	<!--  -->
+	<dependencies>
+		<groupId>com.nttdata</groupId>
+		<artifactId>commons</artifactId>
+		<version>1.0.5</version>
+	</dependencies>
+
+	<!-- -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
