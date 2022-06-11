@@ -13,13 +13,7 @@
 	<artifactId>service-order</artifactId>
 	<version>1.0.4</version>
 								
-	<!-- 	
-	<dependencies>
-		<groupId>com.nttdata</groupId>
-		<artifactId>commons</artifactId>
-		<version>1.0.5</version>
-	</dependencies>
-		 -->
+	
 	<!-- -->
 	<name>service-order</name>
 	<description>Service Order Management</description>
