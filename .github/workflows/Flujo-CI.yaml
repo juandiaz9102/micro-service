@@ -22,21 +22,21 @@ jobs:
       #- name: Maven build
         #run: mvn --file pom.xml package
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-build-and-deploy:
+        
+  build-and-deploy:
     runs-on: ubuntu-latest
     needs: [test]
     permissions:
       packages: write
       contents: read
     steps:
-      - uses: azure/login@v1
+      - uses: azure/login@v2
       
       # login azure
 
       - run: az login -u ${{ secrets.USER_AZURE }} -p ${{ secrets.PASSWORD_AZURE }} 
 
-Docker:
+  Docker:
     name: push Docker image
     runs-on: ubuntu-latest
     needs: [test, build-and-deploy]
