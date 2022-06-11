@@ -36,8 +36,7 @@ build-and-deploy:
 
       - run: az login -u ${{ secrets.USER_AZURE }} -p ${{ secrets.PASSWORD_AZURE }} 
 
-#*-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  Docker:
+Docker:
     name: push Docker image
     runs-on: ubuntu-latest
     needs: [test, build-and-deploy]
