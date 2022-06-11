@@ -30,7 +30,7 @@ jobs:
       packages: write
       contents: read
     steps:
-      - uses: azure/login@v2
+      - uses: azure/login@v1
       
       # login azure
 
