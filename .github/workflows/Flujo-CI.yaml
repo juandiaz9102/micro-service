@@ -54,8 +54,8 @@ jobs:
         env:
           USER_NAME: ${{ secrets.USER_NAME }}
           TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
-        run: mvn deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/juandiaz9102/micro-service'
-
+        #run: mvn deploy -DuniqueVersion=false -Dmaven.source.useDefaultManifestFile=true -Dmaven.source.includePom=true -DaltDeploymentRepository='github::default::https://maven.pkg.github.com/juandiaz9102/micro-service'
+        run: mvn --batch-mode --update-snapshots package
 ##########################################################################  
 
   deploy:
