@@ -67,6 +67,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 11
+          distribution: 'adopt'
       - name: Deploy to Github Package Registry
         env:
           USER_NAME: ${{ secrets.USER_NAME }}
