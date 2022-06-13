@@ -42,9 +42,6 @@
       <protocol>http</protocol>
       <host>proxy.example.com</host>
       <port>8080</port>
-      <username>proxyuser</username>
-      <password>somepassword</password>
-      <nonProxyHosts>www.google.com|*.example.com</nonProxyHosts>
     </proxy>
   </proxies>
 
