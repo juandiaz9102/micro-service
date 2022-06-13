@@ -6,7 +6,6 @@ on:
      
 jobs:
 
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +16,7 @@ jobs:
           java-version: 11
           distribution: 'adopt'
       - name: Maven build
-        run: mvn --file pom.xml package
+        run: mvn -e --file pom.xml package
 
 
   test:                                                         # test no tiene error    
