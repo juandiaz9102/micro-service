@@ -16,7 +16,7 @@ jobs:
           java-version: 11
           distribution: 'adopt'
       - name: Maven build
-        run: mvn -e -x --file pom.xml package
+        #run: mvn -e -x --file pom.xml package
 
 
   test:                                                         # test no tiene error    
