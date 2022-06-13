@@ -17,6 +17,7 @@ jobs:
           distribution: 'adopt'
       - name: Maven build
         #run: mvn -e -x --file pom.xml package
+        run: mvn --batch-mode test --settings settings.xml
 
 
   test:                                                         # test no tiene error    
