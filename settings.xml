@@ -35,15 +35,7 @@
     </profile>
   </profiles>
 
-  <proxies>
-   <proxy>
-      <id>example-proxy</id>
-      <active>true</active>
-      <protocol>http</protocol>
-      <host>proxy.example.com</host>
-      <port>8080</port>
-    </proxy>
-  </proxies>
+
 
     <servers>
         <server>
