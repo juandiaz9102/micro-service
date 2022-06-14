@@ -42,6 +42,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
         run: mvn --batch-mode --update-snapshots package      
 
   deploy:
