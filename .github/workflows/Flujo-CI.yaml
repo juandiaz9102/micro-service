@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '11'
-      - run: mvn --file pom.xml package
+      - run: mvn -x --file pom.xml package
 
       - name: Test
         env:
