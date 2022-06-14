@@ -98,9 +98,9 @@
 
 
 		<dependency>
-			<groupId>com.nttdata</groupId>
-			<artifactId>commons</artifactId>
-			<version>1.0.5</version>
+ 			<groupId>com.nttdata</groupId>
+ 			<artifactId>commons</artifactId>
+  			<version>1.0.5</version>
 		</dependency>
 
 		<dependency>

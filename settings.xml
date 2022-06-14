@@ -40,7 +40,7 @@
     <servers>
         <server>
             <id>github</id>
-            <username>${env.USER_NAME}</username>
+            <username>${env.USER_GIT}</username>
             <password>${env.TOKEN_GITHUB}</password>
         </server>
     </servers>
